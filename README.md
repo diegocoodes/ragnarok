@@ -21,6 +21,19 @@ npm run build
 
 A saída estática fica em `dist/`. Não exige backend, conta ou chave de API. Builds e inventário ficam no `localStorage`; arquivos JSON são o backup portátil.
 
+## Publicar na Vercel
+
+Importe `diegocoodes/ragnarok` e mantenha a raiz do projeto na raiz do repositório. O arquivo `vercel.json` define:
+
+- Framework: `Other` (`null` no arquivo).
+- Instalação: dispensada durante o deploy.
+- Build: `node scripts/build.mjs`.
+- Pasta publicada: `dist`.
+
+O build usa apenas módulos nativos do Node.js para copiar HTML, CSS, JavaScript, imagens e fontes já versionados. Sharp e Playwright são ferramentas locais de desenvolvimento e não precisam ser instalados na Vercel. Assim, a publicação não executa `npm install` nem depende de scripts nativos do Sharp. Para trabalhar localmente ou regenerar imagens, continue usando `npm install` normalmente.
+
+As telas usam navegação por fragmentos (`#feathers`, `#estatuas` etc.), portanto não é necessário redirecionar todas as requisições para `index.html`.
+
 ## Estrutura
 
 - `src/data.js`: catálogo, atributos, raridades, conjuntos, guia e data de revisão.
