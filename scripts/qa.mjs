@@ -3,9 +3,11 @@ import fs from 'node:fs/promises';
 const browser=await chromium.launch({channel:'msedge',headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1050},reducedMotion:'reduce'});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
-await page.goto('http://127.0.0.1:4173/');await page.waitForFunction(()=>document.querySelectorAll('.feather-card').length===23);await page.evaluate(()=>document.fonts.ready);
+await page.goto('http://127.0.0.1:4173/');await page.waitForFunction(()=>document.querySelectorAll('.origin-category').length===3);await page.evaluate(()=>document.fonts.ready);
 await fs.mkdir('.local/qa',{recursive:true});
 await page.screenshot({path:'.local/qa/desktop.png',fullPage:false});
+await page.screenshot({path:'.local/qa/home-desktop.png',fullPage:true});
+await page.locator('[data-browse="DEF"]').click();await page.locator('.feather-card').first().waitFor();
 await page.locator('[data-category="DEF"]').click();if(await page.locator('.feather-card').count()!==8)throw Error('Filtro DEF');
 await page.locator('[data-filter="rarity"]').selectOption('gold');if(await page.locator('.feather-card').count()!==4)throw Error('Filtro raridade');
 await page.locator('#feather-search').fill('Nature');if(await page.locator('.feather-card').count()!==1)throw Error('Busca');
@@ -23,7 +25,8 @@ await page.locator('#import-file').setInputFiles('.local/qa/export.json');await 
 await page.locator('#import-file').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"version":2}')});await page.locator('#toast.error').waitFor();
 await page.setViewportSize({width:390,height:844});
 for(const route of ['inicio','feathers','estatuas','conjuntos','otimizador','salvas','guia','fontes']){await page.goto(`http://127.0.0.1:4173/#${route}`);await page.waitForTimeout(100);const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);if(overflow)throw Error('Overflow mobile: '+route);if(route==='inicio')await page.screenshot({path:'.local/qa/mobile.png',fullPage:true});if(route==='estatuas')await page.screenshot({path:'.local/qa/builder-mobile.png',fullPage:true});}
-await page.setViewportSize({width:320,height:780});await page.goto('http://127.0.0.1:4173/#estatuas');if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Overflow 320px');
+for(const width of [320,768,960]){await page.setViewportSize({width,height:850});for(const route of ['inicio','feathers','estatuas']){await page.goto(`http://127.0.0.1:4173/#${route}`);await page.locator('#main h1').waitFor();if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error(`Overflow ${width}px em ${route}`);}}
+await page.setViewportSize({width:320,height:780});
 await page.goto('http://127.0.0.1:4173/');await page.locator('.mobile-toggle').click();await page.locator('nav a[href="#guia"]').click();await page.waitForURL('**/#guia');
 const broken=await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>i.complete&&!i.naturalWidth).map(i=>i.src));if(broken.length)throw Error('Imagens quebradas: '+broken);
 if(errors.length)throw Error(errors.join('\n'));console.log('QA passou: catálogo, filtros, build, inventário, otimização, comparação, persistência, importação/exportação, mobile e navegação.');await browser.close();

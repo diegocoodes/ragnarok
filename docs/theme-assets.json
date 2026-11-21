@@ -1,0 +1,26 @@
+[
+  {
+    "name": "knight",
+    "url": "https://roglobal.com/assets/imgs/p4_female_big_2s-p8BASFep.png",
+    "originalWidth": 1921,
+    "originalHeight": 1000
+  },
+  {
+    "name": "paladin",
+    "url": "https://roglobal.com/assets/imgs/p4_male_big_2s2-oj5xiFyT.png",
+    "originalWidth": 1920,
+    "originalHeight": 1000
+  },
+  {
+    "name": "archbishop",
+    "url": "https://roglobal.com/assets/imgs/p3_female_big_3-2G-Z4dqF.png",
+    "originalWidth": 1920,
+    "originalHeight": 1000
+  },
+  {
+    "name": "wizard",
+    "url": "https://roglobal.com/assets/imgs/p2_female_big_2s-UKKyUJQk.png",
+    "originalWidth": 1921,
+    "originalHeight": 1000
+  }
+]

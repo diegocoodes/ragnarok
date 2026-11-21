@@ -34,3 +34,13 @@ Cinzel foi escolhida como interpretação dos títulos ornamentais e Nunito Sans
 - Licenças OFL originais: https://github.com/google/fonts/tree/main/ofl/cinzel e https://github.com/google/fonts/tree/main/ofl/nunitosans
 
 Fontes WOFF2 locais com `font-display: swap`. Imagens locais WebP, tamanhos explícitos e variação do cenário para celular. Sem chamadas à API do jogo durante o uso, sem rastreadores e sem envio de builds a contas externas.
+
+## Atualização visual a partir da referência enviada
+
+A referência orienta o layout, as faixas de ferramentas, a tipografia de destaque e os recortes angulares. Sua cor verde não foi adotada: permanecem azul profundo, roxo, dourado e vermelho de ataque, conforme a orientação do usuário.
+
+As artes transparentes de Lord Knight, Paladin, Archbishop e High Wizard vieram do site oficial, a partir da configuração pública `https://roglobal.com/api/job-intro` e das URLs de imagens utilizadas pelo próprio site. As URLs exatas e dimensões originais estão em [theme-assets.json](theme-assets.json). Download, corte de margens transparentes e conversão WebP são reproduzidos por `scripts/theme-assets.mjs`, usando as URLs registradas nesse arquivo.
+
+A Arcebispa do banner é uma personagem ilustrativa do universo de Ragnarok Origin; não é apresentada como imagem de uma estátua Valkyrie. As capturas de estátua continuam no planejador.
+
+Barlow Condensed foi adicionada como fonte aberta para os títulos fortes sugeridos pela referência. Cinzel permanece na marca e nos nomes dos equipamentos; Nunito Sans, nos textos e dados. Nenhuma delas é anunciada como uma fonte oficial do jogo. Licença: https://github.com/google/fonts/tree/main/ofl/barlowcondensed.

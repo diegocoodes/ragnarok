@@ -27,9 +27,11 @@ A saída estática fica em `dist/`. Não exige backend, conta ou chave de API. B
 - `src/engine.js`: compatibilidade, validação, contagem de conjuntos, somas e busca.
 - `src/optimizer-worker.js`: busca fora da thread da interface.
 - `src/app.js`: navegação, filtros, planejador, inventário, comparação e arquivos.
+- `src/home.js`: página inicial com artes oficiais, categorias e acessos às ferramentas.
 - `src/styles.css`: tema, molduras, raridades, responsividade e movimento reduzido.
+- `src/origin-theme.css`: direção visual angular com a paleta de Ragnarok, efeitos de entrada e brilho discreto.
 - `assets/images/`: artes e recortes oficiais convertidos para WebP.
-- `assets/fonts/`: Cinzel, Nunito Sans e licenças OFL.
+- `assets/fonts/`: Barlow Condensed, Cinzel, Nunito Sans e licenças OFL.
 - `tests/engine.test.mjs`: testes das regras e das limitações da fonte.
 - `scripts/qa.mjs`: verificação real dos fluxos no Microsoft Edge instalado, via Playwright.
 
@@ -50,3 +52,5 @@ Para atualizar dados, confronte as tabelas da fonte, edite `data.js`, atualize `
 ## Identidade e créditos
 
 Consulte [docs/SOURCES.md](docs/SOURCES.md). As imagens do jogo pertencem aos seus titulares. Este projeto não implica afiliação, patrocínio ou licença de redistribuição comercial da Gravity. As licenças das fontes estão em `assets/fonts/`.
+
+A imagem de referência do usuário orienta a composição, os títulos e os recortes. A paleta permanece inspirada em Ragnarok: azul profundo, roxo, dourado e vermelho de ataque. O banner usa a arte oficial de Arcebispa como ilustração do universo do jogo, sem apresentá-la como uma estátua Valkyrie. As fontes são alternativas abertas. Efeitos de partículas têm duração finita; entradas e interações respeitam `prefers-reduced-motion` e não utilizam loops JavaScript de animação.
