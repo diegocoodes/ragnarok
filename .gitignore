@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.tar.gz
+test-results/
+.local/
+*-source.html
+official-*.txt
+research-images.json
